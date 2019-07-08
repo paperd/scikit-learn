@@ -30,7 +30,7 @@ def create_sample(d, n, replace='yes'):
     return np.array(Xs), np.array(ys)
 
 def see_time(note):
-    end = time.perf_counter()
+    end = time.time()
     elapsed = end - start
     print (note,
            hf.format_timespan(elapsed, detailed=True))
@@ -52,7 +52,7 @@ if __name__ == "__main__":
         Xs_reduced, ys, random_state=0)
     svm = SVC(gamma='scale', random_state=0)
     print (svm, br)
-    start = time.perf_counter()
+    start = time.time()
     svm.fit(X_train, y_train)
     svm_scores = get_scores(svm, X_train, y_train,
                             X_test, y_test)
@@ -72,7 +72,7 @@ if __name__ == "__main__":
     bp = rand.best_params_
     print (bp, br)
     svm = SVC(**bp, random_state=0)
-    start = time.perf_counter()
+    start = time.time()
     svm.fit(X_train, y_train)
     svm_scores = get_scores(svm, X_train, y_train,
                             X_test, y_test)
